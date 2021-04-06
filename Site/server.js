@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const PORT = 3000;
+const PORT = 80;
 
 /** @function handleRequest
   * Handles request from clients and serves request files along 
