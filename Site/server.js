@@ -15,7 +15,7 @@ function handleRequest(req,res){
 			serveFile('index.html',res);
 		}
 		else{
-			console.log(req.url);
+			//console.log(req.url);
 			serveFile(req.url.substring(1),res); //cut of / on request
 		}
 	}

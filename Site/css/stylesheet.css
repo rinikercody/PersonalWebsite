@@ -1,0 +1,116 @@
+.section{
+	background-color: pink;
+	margin-bottom: 30px;
+	border-radius: 10px;
+	text-align: center;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-bottom: 15px;
+}
+
+.info-section{
+	border-radius: 10px;
+	background-color: green;
+	padding: 10px;
+	text-align: center;
+}
+
+.info-list{
+	text-align: left;
+	color: red;
+	margin-top: 10px;
+}
+
+.info-section-head{
+	font-size: 64px;
+}
+
+.info-sub-section{
+	margin-bottom: 25px;
+}
+
+.info-sub-section h2{
+	color: lime;
+	font-size: 32px;
+}
+
+#name-section{
+	margin-bottom: 50px;
+	background-color: orange;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	padding: 10px;
+}
+
+#name-section h1{
+	font-size: 48px;
+}
+
+#name-section h2{
+	font-size: 32px;
+}
+
+#wrapper{
+	width: 900px;
+	margin: 0 auto;
+	height: 100%;
+	font-size: 20px;
+	background-color: #FFFFB8;
+	text-align: center;
+}
+
+
+#nav-bar{
+	background-color: pink;
+}
+
+#nav-bar-list{
+	text-decoration: none;
+	margin-bottom: 25px;
+	
+	display: flex;
+    align-items: stretch; /* Default */
+    justify-content: space-between;
+    width: 100%;
+    background: #cacaca;
+    margin: 0;
+    padding: 0;
+	
+}
+
+#nav-bar-list li{
+	/*display: inline-block;*/
+	
+	display: block;
+    flex: 0 1 auto; /* Default */
+    list-style-type: none;
+    background: #fafafa;
+	font-size: 32px;
+}
+
+#nav-bar-list li a{
+	text-decoration: none;
+}
+
+.sub-list-items li{
+	color: orange;
+	padding-left: 15px;
+}
+
+body{
+	margin: 0 auto;
+	font-family: Arial;
+	background-color: #FFFFF4;
+	
+	/* The image used */
+	/*background-image: url("../images/background.png");*/
+
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	
+	background-size: cover; /* streaths image to width */
+	
+	background-attachment: fixed; /* Makes image follow scroll */
+	
+}
