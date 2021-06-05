@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const qs = require('querystring');
 
 const PORT = 80;
 
@@ -12,6 +13,8 @@ const PORT = 80;
 function handleRequest(req,res){	
 	if(req.method === 'GET'){
 		if(req.url === '/'){
+			console.log("Some one visited the site");
+			console.log(req.connection.remoteAddress);
 			serveFile('index.html',res);
 		}
 		else{
@@ -19,17 +22,9 @@ function handleRequest(req,res){
 			serveFile(req.url.substring(1),res); //cut of / on request
 		}
 	}
-	
 	if(req.method === 'POST'){
-		var body = '';
-		req.on('data', function(data){
-			body += data;
-		});
-		
-		req.on('end', function(){
-			var post = qs.parse(body);
-			//Do Stuff Here
-		});
+		console.log(req.connection.remoteAddress + ": made a post request to the server.");
+		serveFile('index.html',res);
 	}
 }
 
