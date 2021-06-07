@@ -1,39 +1,36 @@
 const http = require('http');
 const fs = require('fs');
-const qs = require('querystring');
+var path = require('path');
 
 const PORT = 80;
 
-/** @function handleRequest
-  * Handles request from clients and serves request files along 
-  * with interacting with the application database.
-  * @param {http.ClientRequest} req - The client request object.
-  * @param {http.ServerResponse} res - The server response object.
-  */
-function handleRequest(req,res){	
-	if(req.method === 'GET'){
-		if(req.url === '/'){
-			console.log("Some one visited the site");
-			console.log(req.connection.remoteAddress);
+function handleRequest(req,res){
+	if(req.url == '/server.js' || req.url == '/Logs/log.txt'){
+		res.statusCode = 404;
+		res.end('File not found');
+	}
+	else{
+		if(req.method === 'GET'){
+			if(req.url === '/'){
+				var date = new Date();
+				var str = ':) Someone visited the site on: ' + getLocalTimeString(date) + '\r\n';
+				fs.appendFileSync(path.join('Logs','log.txt'),str);
+				serveFile('index.html',res);
+			}
+			else{
+				serveFile(req.url.substring(1),res); //cut of / on request
+			}
+		}
+		if(req.method === 'POST'){
+			var date = new Date();
+			var str = 'IP: ' + req.connection.remoteAddress + ' made a POST request on: ' + getLocalTimeString(date) + '\r\n';
+			fs.appendFileSync(path.join('Logs','visitData.txt'),str);
 			serveFile('index.html',res);
 		}
-		else{
-			//console.log(req.url);
-			serveFile(req.url.substring(1),res); //cut of / on request
-		}
-	}
-	if(req.method === 'POST'){
-		console.log(req.connection.remoteAddress + ": made a post request to the server.");
-		serveFile('index.html',res);
 	}
 }
 
-/** @function serveFile
-  * Serves a request file by reading in the information and displaying
-  * it to the user.
-  * @param {String} path - The path to the file the client requested.
-  * @param {http.ServerResponse} res - The server response object.
-  */  
+//Load all files
 function serveFile(path,res){
 	fs.readFile(path, function(err,data){
 		if(err){
@@ -50,3 +47,30 @@ var server = http.createServer(handleRequest);
 server.listen(PORT, function(){
 	console.log("Listening at port " , PORT);
 });
+
+//Turns date into local time.
+function getLocalTimeString(date){
+	var newString = '';
+	
+	var amPM = 'AM';
+	if(date.getHours() > 11){
+		amPM = 'PM';
+	}
+
+	var hour = 0;
+	if(date.getHours() > 12){
+		hour = date.getHours() - 12;
+	}
+	else{
+		hour = date.getHours();
+	}
+	
+	if(date.getMinutes() < 10){
+		newString = hour + ":0" + date.getMinutes() + ' ' + amPM;
+	}
+	else{
+		newString = hour + ":" + date.getMinutes() + ' ' + amPM;
+	}
+	
+	return newString;
+}

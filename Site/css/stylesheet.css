@@ -1,5 +1,4 @@
 .section{
-	background-color: pink;
 	margin-bottom: 30px;
 	border-radius: 10px;
 	text-align: center;
@@ -9,37 +8,50 @@
 }
 
 .info-section{
-	border-radius: 10px;
-	background-color: green;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	background-color: rgb(255,220,50);
 	padding: 10px;
 	text-align: center;
 }
 
 .info-list{
 	text-align: left;
-	color: red;
+	color: rgb(0,0,0);
 	margin-top: 10px;
+	font-size: 24px;
+}
+
+.info-list li{
+	padding-top: 10px;
 }
 
 .info-section-head{
 	font-size: 64px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: rgba(240,220,100,1);
+	padding-bottom: 10px;
+}
+
+.info-section-head-small{
+	font-size: 32px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color: rgba(240,220,100,1);
+	padding-bottom: 10px;
 }
 
 .info-sub-section{
 	margin-bottom: 25px;
 }
 
-.info-sub-section h2{
-	color: lime;
-	font-size: 32px;
-}
-
 #name-section{
 	margin-bottom: 50px;
-	background-color: orange;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	padding: 10px;
+	background-color: rgba(255,220,100,1);
+	border-radius: 10px;
+	margin-left:25px;
+	margin-right: 25px;
 }
 
 #name-section h1{
@@ -47,7 +59,7 @@
 }
 
 #name-section h2{
-	font-size: 32px;
+	font-size: 32px; 
 }
 
 #wrapper{
@@ -57,53 +69,46 @@
 	font-size: 20px;
 	background-color: #FFFFB8;
 	text-align: center;
-}
-
-
-#nav-bar{
-	background-color: pink;
-}
-
-#nav-bar-list{
-	text-decoration: none;
-	margin-bottom: 25px;
+	background:rgba(0,0,0,0.5);
+	margin-top: 10px;
+	padding-top: 10px;
+	border-radius: 10px;
 	
-	display: flex;
-    align-items: stretch; /* Default */
-    justify-content: space-between;
-    width: 100%;
-    background: #cacaca;
-    margin: 0;
-    padding: 0;
-	
-}
-
-#nav-bar-list li{
-	/*display: inline-block;*/
-	
-	display: block;
-    flex: 0 1 auto; /* Default */
-    list-style-type: none;
-    background: #fafafa;
-	font-size: 32px;
-}
-
-#nav-bar-list li a{
-	text-decoration: none;
 }
 
 .sub-list-items li{
-	color: orange;
+	font-size: 16px;
+	color: black;
 	padding-left: 15px;
 }
+
+#programming-section{
+	opacity: 0.3;
+}
+
+#projects-link{
+	text-decoration: none;
+	color: white;
+}
+
+#projects-container{
+	border-radius: 10px;
+	background-color: green;
+	padding: 10px;
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 200px;
+}
+
+.info-list li::before {content: '-  '; color: black}
+.sub-list-items li::before{content: '*'; color: black}
 
 body{
 	margin: 0 auto;
 	font-family: Arial;
-	background-color: #FFFFF4;
 	
 	/* The image used */
-	/*background-image: url("../images/background.png");*/
+	background-image: url("../images/background2.png");
 
 	/* Center and scale the image nicely */
 	background-position: center;
@@ -112,5 +117,22 @@ body{
 	background-size: cover; /* streaths image to width */
 	
 	background-attachment: fixed; /* Makes image follow scroll */
-	
+}
+
+@media only screen and (max-width: 800px) {
+	body{
+		margin: 0 auto;
+		font-family: Arial;
+		
+		/* The image used */
+		background-image: url("../images/background4.jpg"); /* This is just a smaller version of the desktop image to speed up load times*/
+
+		/* Center and scale the image nicely */
+		background-position: center;
+		background-repeat: no-repeat;
+		
+		background-size: cover; /* streaths image to width */
+		
+		background-attachment: fixed; /* Makes image follow scroll */
+	}
 }
