@@ -5,7 +5,7 @@ var path = require('path');
 const PORT = 80;
 
 function handleRequest(req,res){
-	if(req.url == '/server.js' || req.url == '/Logs/log.txt'){
+	if(req.url == '/server.js' || req.url == '/Logs/log.txt' || req.url == 'server.js'){
 		res.statusCode = 404;
 		res.end('File not found');
 	}
@@ -13,8 +13,9 @@ function handleRequest(req,res){
 		if(req.method === 'GET'){
 			if(req.url === '/'){
 				var date = new Date();
-				var str = ':) Someone visited the site on: ' + getLocalTimeString(date) + '\r\n';
-				fs.appendFileSync(path.join('Logs','log.txt'),str);
+				var d = date.getMonth() + '-' + date.getDay() + '-' + date.getFullYear(); //Get date in form 5/2/2021, month day year
+				var str = d + ',' + getLocalTimeString(date) + '\r\n';
+				fs.appendFileSync(path.join('Logs','visitData.txt'),str);
 				serveFile('index.html',res);
 			}
 			else{
@@ -23,8 +24,9 @@ function handleRequest(req,res){
 		}
 		if(req.method === 'POST'){
 			var date = new Date();
+			var d = date.getMonth() + '-' + date.getDay() + '-' + date.getFullYear(); //Get date in form 5/2/2021, month day year
 			var str = 'IP: ' + req.connection.remoteAddress + ' made a POST request on: ' + getLocalTimeString(date) + '\r\n';
-			fs.appendFileSync(path.join('Logs','visitData.txt'),str);
+			fs.appendFileSync(path.join('Logs','log.txt'),str);
 			serveFile('index.html',res);
 		}
 	}
